@@ -1,6 +1,8 @@
 package com.qbit.xilofono;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 import android.os.Bundle;
@@ -21,7 +23,10 @@ public class MainActivity extends Activity implements OnClickListener{
 	private SoundPool soundPool;
 	private boolean loaded = false;
 	private HashMap<String, Integer> mapaSonidos;
-	private String ultimaCancion="DO_100,RE_100,MI_100,FA_100,SOL_100,LA_100,SI_100,DO1_100";
+	private String ultimaCancion="";
+	private boolean flgGrabar = false;
+	private long inicioGrabacion =0;
+	private List<String> lsCancion;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -116,6 +121,9 @@ public class MainActivity extends Activity implements OnClickListener{
 	        case R.id.action_reproducir:
 	        	reproducirUltimaCancion();
 	            return true;
+	        case R.id.action_grabar:
+	        	iniciarGrabacion();
+	            return true;
 	        default:
 	            return false;
 	    }
@@ -154,15 +162,61 @@ public class MainActivity extends Activity implements OnClickListener{
 			nota = "";
 			break;
 		}
-		
+		long inicioNota = System.currentTimeMillis();
 		reproducir(nota);
+		long finNota = System.currentTimeMillis();
 		
+		if(flgGrabar){
+			long duracionNota = finNota-inicioNota;
+			if(inicioGrabacion>0){
+				long tiempo = System.currentTimeMillis() - inicioGrabacion-duracionNota;
+				if(tiempo<0){
+					tiempo = 200;
+					
+				}
+				String cmp = nota +"_"+ tiempo;
+				lsCancion.add(cmp);
+				
+			}
+			inicioGrabacion= System.currentTimeMillis();
+		}
 	}
 	
 	public void reproducirUltimaCancion(){
+		if(ultimaCancion.length()>0){
+			ReproducirCadena(ultimaCancion);
+			
+		}
 		
-		ReproducirCadena(ultimaCancion);
 		
+	}
+	public void iniciarGrabacion(){
+		flgGrabar=!flgGrabar;
+		if(flgGrabar){
+			//iniciar 
+			lsCancion = new ArrayList<String>();
+			inicioGrabacion = System.currentTimeMillis();
+			ultimaCancion="";
+		} else{
+			//detener
+			if(lsCancion.size() >0){
+				String[] array = lsCancion.toArray(new String[lsCancion.size()]);
+				ultimaCancion =combine(array,",");
+			}
+			
+		}
+		
+	}
+	public String combine(String[] s, String glue)
+	{
+	  int k=s.length;
+	  if (k==0)
+	    return null;
+	  StringBuilder out=new StringBuilder();
+	  out.append(s[0]);
+	  for (int x=1;x<k;++x)
+	    out.append(glue).append(s[x]);
+	  return out.toString();
 	}
 	
 	public void reproducirEscala(){
