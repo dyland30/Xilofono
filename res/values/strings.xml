@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Xilofono</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_do">DO</string>
+    <string name="str_re">RE</string>
+    <string name="str_mi">MI</string>
+    <string name="str_fa">FA</string>
+    <string name="str_sol">SOL</string>
+    <string name="str_la">LA</string>
+    <string name="str_si">SI</string>
+    <string name="str_tituloError">Error</string>
+    <string name="str_aceptar">Aceptar</string>
+
+</resources>
