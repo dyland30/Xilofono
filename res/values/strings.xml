@@ -12,5 +12,8 @@
     <string name="str_si">SI</string>
     <string name="str_tituloError">Error</string>
     <string name="str_aceptar">Aceptar</string>
+    <string name="str_tocarEscala">Tocar Escala</string>
+    <string name="str_grabar">Grabar</string>
+    <string name="str_play">Reproducir</string>
 
 </resources>

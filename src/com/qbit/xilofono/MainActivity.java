@@ -1,14 +1,15 @@
 package com.qbit.xilofono;
 
-
 import java.util.HashMap;
 
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private SoundPool soundPool;
 	private boolean loaded = false;
 	private HashMap<String, Integer> mapaSonidos;
+	private String ultimaCancion="DO_100,RE_100,MI_100,FA_100,SOL_100,LA_100,SI_100,DO1_100";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,7 +101,24 @@ public class MainActivity extends Activity implements OnClickListener{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.action_tocarEscala:
+	        	reproducirEscala();
+	            return true;
+	        case R.id.action_reproducir:
+	        	reproducirUltimaCancion();
+	            return true;
+	        default:
+	            return false;
+	    }
 	}
 
 	@Override
@@ -137,6 +156,38 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 		
 		reproducir(nota);
+		
+	}
+	
+	public void reproducirUltimaCancion(){
+		
+		ReproducirCadena(ultimaCancion);
+		
+	}
+	
+	public void reproducirEscala(){
+		String escala  ="DO_200,RE_200,MI_200,FA_200,SOL_200,LA_200,SI_200,DO1_200";
+		
+		ReproducirCadena(escala);
+		
+	}
+	public void ReproducirCadena(String cadena){
+		
+		String[] notas= cadena.split(",");
+		for(String not : notas){
+			String[] comp = not.split("_");
+			int tiempo = Integer.parseInt(comp[1]);
+			
+			reproducir(comp[0]);
+			Dormir(tiempo);
+			
+			
+		}
+		
+	}
+	public void Dormir(int tiempo){
+		
+		SystemClock.sleep(tiempo);
 		
 	}
 	public void reproducir(String nota){

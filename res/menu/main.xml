@@ -4,5 +4,16 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"/>
-
+<item
+        android:id="@+id/action_tocarEscala"
+        android:orderInCategory="100"
+        android:title="@string/str_tocarEscala"/>
+<item
+        android:id="@+id/action_grabar"
+        android:orderInCategory="100"
+        android:title="@string/str_grabar"/>
+<item
+        android:id="@+id/action_reproducir"
+        android:orderInCategory="100"
+        android:title="@string/str_play"/>
 </menu>
