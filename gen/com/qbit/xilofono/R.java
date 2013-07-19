@@ -22,12 +22,15 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int ic_menu_play=0x7f020001;
+        public static final int ic_menu_record=0x7f020002;
+        public static final int ic_menu_song=0x7f020003;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
+        public static final int action_cancion=0x7f090009;
         public static final int action_grabar=0x7f09000b;
         public static final int action_reproducir=0x7f09000c;
-        public static final int action_settings=0x7f090009;
         public static final int action_tocarEscala=0x7f09000a;
         public static final int btnDo=0x7f090001;
         public static final int btnDo1=0x7f090008;
@@ -58,6 +61,7 @@ public final class R {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int str_aceptar=0x7f06000a;
+        public static final int str_cancion=0x7f06000e;
         public static final int str_do=0x7f060002;
         public static final int str_fa=0x7f060005;
         public static final int str_grabar=0x7f06000c;

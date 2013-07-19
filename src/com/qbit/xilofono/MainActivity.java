@@ -124,6 +124,9 @@ public class MainActivity extends Activity implements OnClickListener{
 	        case R.id.action_grabar:
 	        	iniciarGrabacion();
 	            return true;
+	        case R.id.action_cancion:
+	        	reproducirCancion();
+	        	return true;
 	        default:
 	            return false;
 	    }
@@ -223,6 +226,12 @@ public class MainActivity extends Activity implements OnClickListener{
 		String escala  ="DO_200,RE_200,MI_200,FA_200,SOL_200,LA_200,SI_200,DO1_200";
 		
 		ReproducirCadena(escala);
+		
+	}
+	public void reproducirCancion(){
+		
+		String cancion = "MI_200,MI_200,SOL_400,MI_200,MI_200,SOL_400,MI_200,SOL_200,DO1_400,SI_400,LA_400,LA_400,SOL_400,RE_200,MI_200,FA_400,RE_400,RE_200,MI_200,FA_400,RE_200,FA_200,SI_200,LA_200,SOL_400,SI_400,DO1_400,DO_200,DO_200,DO1_400,LA_200,FA_200,SOL_400,MI_200,DO_200,FA_400,SOL_400,LA_400,SOL_400,DO_200,DO_200,DO1_400,LA_200,FA_200,SOL_400,MI_200,DO_200,FA_400,MI_400,RE_200,DO_400";
+		ReproducirCadena(cancion);
 		
 	}
 	public void ReproducirCadena(String cadena){

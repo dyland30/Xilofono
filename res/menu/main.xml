@@ -1,9 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_cancion"
         android:orderInCategory="100"
-        android:title="@string/action_settings"/>
+        android:title="@string/str_cancion"
+        android:icon="@drawable/ic_menu_song"
+        />
 <item
         android:id="@+id/action_tocarEscala"
         android:orderInCategory="100"
@@ -11,9 +13,11 @@
 <item
         android:id="@+id/action_grabar"
         android:orderInCategory="100"
-        android:title="@string/str_grabar"/>
+        android:title="@string/str_grabar"
+        android:icon="@drawable/ic_menu_record"/>
 <item
         android:id="@+id/action_reproducir"
         android:orderInCategory="100"
-        android:title="@string/str_play"/>
+        android:title="@string/str_play"
+        android:icon="@drawable/ic_menu_play"/>
 </menu>
